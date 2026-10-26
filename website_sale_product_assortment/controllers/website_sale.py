@@ -32,10 +32,12 @@ class WebsiteSale(WebsiteSale):
                 # that are not active, (for example Public User)
                 partner & assortment.with_context(active_test=False).all_partner_ids
             ):
+                product_ids = set(assortment.all_product_ids.ids)
+                if assortment_restriction:
+                    allowed_product_ids.intersection_update(product_ids)
+                else:
+                    allowed_product_ids = product_ids
                 assortment_restriction = True
-                allowed_product_ids = allowed_product_ids.union(
-                    set(assortment.all_product_ids.ids)
-                )
         return allowed_product_ids, assortment_restriction
 
     @route()

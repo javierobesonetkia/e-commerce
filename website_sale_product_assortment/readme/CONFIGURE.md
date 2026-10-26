@@ -15,3 +15,7 @@ select an option on the website availability field.
   short description to the product item and the other one will set a
   detailed description on the product sheet. This second one is editable
   from the website editor.
+
+When several assortments with **Avoid to show non available products** apply
+to the same customer and website, a product variant must be allowed by all
+of them to be visible.
